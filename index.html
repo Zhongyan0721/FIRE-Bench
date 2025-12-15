@@ -107,16 +107,16 @@
               <h3 class="title is-4">The Challenge</h3>
               <p>How do we rigorously evaluate AI agents for <strong>genuine scientific discovery</strong>?</p>
               <ul class="challenge-list">
-                <li><span class="cross">✗</span> LLM-as-judge evaluations are unreliable and circular</li>
+                <li><span class="cross">✗</span> LLM-as-judge on auto-generated papers is unreliable</li>
                 <li><span class="cross">✗</span> Single performance metrics are too coarse-grained</li>
-                <li><span class="check">✓</span> <strong>FIRE-Bench:</strong> Verifiable insight rediscovery</li>
+                <li><span class="check">✓</span> <strong>FIRE-Bench:</strong> Verifiable insight rediscovery with grounded evaluation</li>
               </ul>
             </div>
           </div>
           <div class="column is-6">
             <div class="stats-grid">
               <div class="stat-card">
-                <div class="stat-number">15</div>
+                <div class="stat-number">23</div>
                 <div class="stat-label">Research Tasks</div>
               </div>
               <div class="stat-card">
@@ -128,8 +128,8 @@
                 <div class="stat-label">Best F₁ Score</div>
               </div>
               <div class="stat-card">
-                <div class="stat-number">9</div>
-                <div class="stat-label">Failure Categories</div>
+                <div class="stat-number">14</div>
+                <div class="stat-label">Error Categories</div>
               </div>
             </div>
           </div>
@@ -148,7 +148,7 @@
         <h2 class="title is-3 section-title">Abstract</h2>
         <div class="content has-text-justified abstract-content">
           <p>
-            Autonomous agents powered by large language models (LLMs) promise to accelerate scientific discovery, but rigorously evaluating their capacity for <strong>genuine discovery</strong> remains a critical challenge. Current evaluation benchmarks face a dilemma: they either rely on LLM-as-judge evaluations of auto-generated papers, which raise concerns about validity and circularity, or focus on optimizing single performance metrics that serve as a coarse proxy for genuine discovery.
+            Autonomous agents powered by large language models (LLMs) promise to accelerate scientific discovery, but rigorously evaluating their capacity for <strong>genuine discovery</strong> remains a critical challenge. Current evaluation benchmarks face a dilemma: they either rely on LLM-as-judge evaluations of auto-generated papers, which are unreliable due to lack of verifiable ground truth, or focus on optimizing single performance metrics that serve as a coarse proxy for genuine discovery.
           </p>
           <p>
             To address this, we introduce <strong>FIRE-Bench</strong> (<strong>F</strong>ull-cycle <strong>I</strong>nsight <strong>R</strong>ediscovery <strong>E</strong>valuation). Our benchmark reframes evaluation by tasking agents with the <em>verifiable rediscovery</em> of established scientific findings from recent, high-impact ML research. We provide agents only with the high-level research question from a published study, requiring them to autonomously design experiments, implement code, execute their plan, and derive a conclusion from the evidence.
@@ -260,7 +260,7 @@
       <div class="method-card">
         <div class="method-icon">🔍</div>
         <h4 class="method-title">Error Taxonomy</h4>
-        <p>We trace errors across four research stages—Planning, Implementation, Execution, and Analysis—with nine distinct failure categories.</p>
+        <p>We trace errors across four research stages—Planning, Implementation, Execution, and Analysis—with 14 distinct error categories.</p>
       </div>
     </div>
   </div>
@@ -346,7 +346,7 @@
             <td>77.6±4.3</td>
           </tr>
           <tr class="avg-row">
-            <td><strong>Average (All 15 Tasks)</strong></td>
+            <td><strong>Average (All 23 Tasks)</strong></td>
             <td>34.8±28.8</td>
             <td>41.7±17.9</td>
             <td>40.4±16.3</td>
@@ -666,7 +666,7 @@
   <div class="container is-max-desktop">
     <h2 class="title is-3 section-title has-text-centered">Benchmark Tasks</h2>
     <p class="has-text-centered" style="margin-bottom: 2rem;">
-      FIRE-Bench includes 15 research tasks derived from high-impact papers at ICLR, ICML, and NeurIPS (2024-2025).
+      FIRE-Bench includes 23 research tasks derived from high-impact papers at ICLR, ICML, and NeurIPS (2024-2025).
     </p>
     
     <div class="tasks-grid">
