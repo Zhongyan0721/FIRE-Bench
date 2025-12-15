@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="FIRE-Bench evaluates AI research agents on their ability to autonomously rediscover established scientific findings from recent ML research.">
+  <meta name="keywords" content="FIRE-Bench, AI Research Agents, Scientific Discovery, LLM Evaluation, Benchmark">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FIRE-Bench: Evaluating Research Agents on the Rediscovery of Scientific Insights</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Space+Grotesk:400,500,600,700|JetBrains+Mono:400,500&display=swap"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<section class="hero hero-header">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <div class="venue-badge">
+            <span class="tag is-medium">ICLR 2026 (Under Review)</span>
+          </div>
+          <h1 class="title is-1 publication-title">
+            <span class="fire-logo">🔥</span> FIRE-Bench
+          </h1>
+          <h2 class="subtitle is-3 publication-subtitle">
+            Evaluating Research Agents on the Rediscovery of Scientific Insights
+          </h2>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Anonymous Authors</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-database"></i>
+                  </span>
+                  <span>Benchmark</span>
+                </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Teaser Section -->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div class="teaser-content">
+        <div class="columns is-vcentered">
+          <div class="column is-6">
+            <div class="teaser-text">
+              <h3 class="title is-4">The Challenge</h3>
+              <p>How do we rigorously evaluate AI agents for <strong>genuine scientific discovery</strong>?</p>
+              <ul class="challenge-list">
+                <li><span class="cross">✗</span> LLM-as-judge evaluations are unreliable and circular</li>
+                <li><span class="cross">✗</span> Single performance metrics are too coarse-grained</li>
+                <li><span class="check">✓</span> <strong>FIRE-Bench:</strong> Verifiable insight rediscovery</li>
+              </ul>
+            </div>
+          </div>
+          <div class="column is-6">
+            <div class="stats-grid">
+              <div class="stat-card">
+                <div class="stat-number">15</div>
+                <div class="stat-label">Research Tasks</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number">4</div>
+                <div class="stat-label">Evaluation Stages</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number">50.1</div>
+                <div class="stat-label">Best F₁ Score</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number">9</div>
+                <div class="stat-label">Failure Categories</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 section-title">Abstract</h2>
+        <div class="content has-text-justified abstract-content">
+          <p>
+            Autonomous agents powered by large language models (LLMs) promise to accelerate scientific discovery, but rigorously evaluating their capacity for <strong>genuine discovery</strong> remains a critical challenge. Current evaluation benchmarks face a dilemma: they either rely on LLM-as-judge evaluations of auto-generated papers, which raise concerns about validity and circularity, or focus on optimizing single performance metrics that serve as a coarse proxy for genuine discovery.
+          </p>
+          <p>
+            To address this, we introduce <strong>FIRE-Bench</strong> (<strong>F</strong>ull-cycle <strong>I</strong>nsight <strong>R</strong>ediscovery <strong>E</strong>valuation). Our benchmark reframes evaluation by tasking agents with the <em>verifiable rediscovery</em> of established scientific findings from recent, high-impact ML research. We provide agents only with the high-level research question from a published study, requiring them to autonomously design experiments, implement code, execute their plan, and derive a conclusion from the evidence.
+          </p>
+          <p>
+            We evaluate a suite of state-of-the-art agents with frontier model backbones (e.g., GPT-5) on FIRE-Bench. Our findings paint a <strong>sobering picture</strong> of current capabilities: even the most advanced agents struggle profoundly, exhibiting low success rates, high variance, and a spectrum of recurring failure modes ranging from flawed experimental design to ungrounded conclusions. FIRE-Bench provides a rigorous, diagnostic framework for measuring and driving progress towards AI agents capable of genuine scientific discovery.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+
+<!-- Comparison Table -->
+<section class="section comparison-section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 section-title has-text-centered">Benchmark Comparison</h2>
+    <div class="comparison-table-wrapper">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Paradigm</th>
+            <th>Full Cycle</th>
+            <th>Insight Driven</th>
+            <th>Grounded Eval.</th>
+            <th>Method. Explor.</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Method Replication / Engineering</td>
+            <td><span class="check-mark">✓</span></td>
+            <td><span class="cross-mark">✗</span></td>
+            <td><span class="check-mark">✓</span></td>
+            <td><span class="cross-mark">✗</span></td>
+          </tr>
+          <tr>
+            <td>Isolated Stage Automation</td>
+            <td><span class="cross-mark">✗</span></td>
+            <td><span class="cross-mark">✗</span></td>
+            <td><span class="check-mark">✓</span></td>
+            <td><span class="cross-mark">✗</span></td>
+          </tr>
+          <tr>
+            <td>Full Paper Generation</td>
+            <td><span class="check-mark">✓</span></td>
+            <td><span class="check-mark">✓</span></td>
+            <td><span class="cross-mark">✗</span></td>
+            <td><span class="check-mark">✓</span></td>
+          </tr>
+          <tr class="highlight-row">
+            <td><strong>🔥 FIRE-Bench</strong></td>
+            <td><span class="check-mark">✓</span></td>
+            <td><span class="check-mark">✓</span></td>
+            <td><span class="check-mark">✓</span></td>
+            <td><span class="check-mark">✓</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+
+<!-- Framework Section -->
+<section class="section framework-section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 section-title has-text-centered">Framework Overview</h2>
+    <div class="framework-content">
+      <div class="framework-image">
+        <img src="./static/images/framework.png" alt="FIRE-Bench Framework" />
+      </div>
+      <div class="framework-description">
+        <p class="has-text-centered">
+          FIRE-Bench presents an AI research agent with a high-level question from a seminal paper and evaluates its ability to <strong>autonomously rediscover</strong> the paper's core insight, enabling a fine-grained comparison of the entire machine-generated research trajectory against the human-authored ground truth.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Methodology Section -->
+<section class="section methodology-section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 section-title has-text-centered">Methodology</h2>
+    
+    <div class="methodology-grid">
+      <div class="method-card">
+        <div class="method-icon">🌳</div>
+        <h4 class="method-title">Research-Problem Tree</h4>
+        <p>We formalize the intellectual structure of empirical analysis papers as hierarchical research-problem trees, encoding the reasoning trajectory from broad questions to specific experimental tasks.</p>
+      </div>
+      
+      <div class="method-card">
+        <div class="method-icon">🎯</div>
+        <h4 class="method-title">Constrained Rediscovery</h4>
+        <p>Agents receive only the high-level research question while methodology and conclusions are withheld, creating an open-ended discovery problem with verifiable ground truth.</p>
+      </div>
+      
+      <div class="method-card">
+        <div class="method-icon">📊</div>
+        <h4 class="method-title">Claim-Level Evaluation</h4>
+        <p>Following RAGChecker, we perform fine-grained analysis by decomposing conclusions into atomic claims and computing Precision, Recall, and F₁ scores.</p>
+      </div>
+      
+      <div class="method-card">
+        <div class="method-icon">🔍</div>
+        <h4 class="method-title">Error Taxonomy</h4>
+        <p>We trace errors across four research stages—Planning, Implementation, Execution, and Analysis—with nine distinct failure categories.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Results Section -->
+<section class="section results-section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 section-title has-text-centered">Key Results</h2>
+    
+    <div class="results-content">
+      <div class="result-highlight">
+        <h4>📉 Low Overall Performance</h4>
+        <p>The best-performing agent (Claude Code) achieves only <strong>50.1 F₁</strong> on average. Even frontier models struggle with full-cycle scientific inquiry.</p>
+      </div>
+      
+      <div class="result-highlight">
+        <h4>📈 High Variance</h4>
+        <p>Extremely high standard deviations across runs indicate a critical lack of reliability. Success often appears to be a "lottery."</p>
+      </div>
+      
+      <div class="result-highlight">
+        <h4>🧠 Planning is the Bottleneck</h4>
+        <p>For top agents, <strong>60.3%</strong> of errors originate from flawed planning—not coding or execution. The challenge is scientific reasoning, not implementation.</p>
+      </div>
+    </div>
+
+    <!-- Results Table -->
+    <div class="results-table-wrapper">
+      <h3 class="title is-4 has-text-centered" style="margin-top: 2rem;">Performance Comparison (F₁ Scores)</h3>
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th>Task</th>
+            <th>OpenHands<br/><small>(o4-mini)</small></th>
+            <th>OpenHands<br/><small>(gpt-5)</small></th>
+            <th>Codex CLI<br/><small>(gpt-5-med)</small></th>
+            <th>Claude Code<br/><small>(Sonnet-4)</small></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Lost in the Middle</td>
+            <td>57.0±49.6</td>
+            <td>71.1±7.7</td>
+            <td class="best-score">91.7±14.4</td>
+            <td>60.1±30.0</td>
+          </tr>
+          <tr>
+            <td>LLM Racial Bias in Medicine</td>
+            <td class="best-score">34.2±31.7</td>
+            <td>0.0±0.0</td>
+            <td>10.5±18.2</td>
+            <td>0.0±0.0</td>
+          </tr>
+          <tr>
+            <td>LLMs Lack Self-Correction</td>
+            <td>20.0±34.6</td>
+            <td>26.7±23.1</td>
+            <td>13.3±23.1</td>
+            <td class="best-score">42.6±10.7</td>
+          </tr>
+          <tr>
+            <td>CoT Faithfulness Gaps</td>
+            <td>20.5±35.5</td>
+            <td>61.6±41.1</td>
+            <td class="best-score">72.7±23.0</td>
+            <td>66.7±28.9</td>
+          </tr>
+          <tr>
+            <td>CoT Without Prompting</td>
+            <td>16.7±28.9</td>
+            <td>26.4±28.0</td>
+            <td>13.8±23.9</td>
+            <td class="best-score">82.6±23.0</td>
+          </tr>
+          <tr>
+            <td>Hallucination Snowballing</td>
+            <td>58.0±50.8</td>
+            <td>69.2±19.5</td>
+            <td class="best-score">80.9±21.8</td>
+            <td>77.6±4.3</td>
+          </tr>
+          <tr class="avg-row">
+            <td><strong>Average (All 15 Tasks)</strong></td>
+            <td>34.8±28.8</td>
+            <td>41.7±17.9</td>
+            <td>40.4±16.3</td>
+            <td class="best-score"><strong>50.1±23.4</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+
+<!-- Interactive Error Explorer Section -->
+<section class="section error-explorer-section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 section-title has-text-centered">Interactive Error Explorer</h2>
+    <p class="has-text-centered" style="margin-bottom: 2rem; color: var(--text-secondary);">
+      Click on any error type to view real examples from our experiments. Explore how different agents fail at various stages of the research process.
+    </p>
+    
+    <!-- Error Type Tabs -->
+    <div class="error-tabs">
+      <div class="error-tab-group">
+        <div class="tab-group-header planning-bg">📋 Planning</div>
+        <div class="tab-buttons">
+          <button class="error-tab active" data-error="goal-deviation">Goal Deviation</button>
+          <button class="error-tab" data-error="method-deviation">Method Deviation</button>
+        </div>
+      </div>
+      <div class="error-tab-group">
+        <div class="tab-group-header implementation-bg">💻 Implementation</div>
+        <div class="tab-buttons">
+          <button class="error-tab" data-error="unsound-implementation">Unsound Implementation</button>
+          <button class="error-tab" data-error="step-missing">Step Missing</button>
+        </div>
+      </div>
+      <div class="error-tab-group">
+        <div class="tab-group-header execution-bg">⚡ Execution</div>
+        <div class="tab-buttons">
+          <button class="error-tab" data-error="premature-termination">Premature Termination</button>
+        </div>
+      </div>
+      <div class="error-tab-group">
+        <div class="tab-group-header analysis-bg">🔬 Analysis</div>
+        <div class="tab-buttons">
+          <button class="error-tab" data-error="analysis-failure">Analysis Failure</button>
+          <button class="error-tab" data-error="overgeneralized">Overgeneralized Conclusion</button>
+          <button class="error-tab" data-error="unrelated">Unrelated Conclusion</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Error Content Panel -->
+    <div class="error-content-panel">
+      <!-- Goal Deviation -->
+      <div class="error-content active" id="goal-deviation">
+        <div class="error-header">
+          <h3>Goal Deviation</h3>
+          <span class="error-phase-badge planning-bg">Planning Phase</span>
+        </div>
+        <div class="error-description">
+          <p>The agent deviates from the intended research goal, pursuing a different research question than what was asked.</p>
+        </div>
+        <div class="error-example">
+          <div class="example-header">
+            <span class="agent-badge codex">Codex (gpt-5-medium)</span>
+            <span class="task-badge">Awareness Detection</span>
+          </div>
+          <div class="example-body">
+            <div class="example-row">
+              <div class="example-label">Research Question:</div>
+              <div class="example-value">Can language models detect that a given interaction transcript comes from an evaluation rather than real-world deployment?</div>
+            </div>
+            <div class="example-row">
+              <div class="example-label">Agent's Conclusion:</div>
+              <div class="example-value incorrect">"Frontier language models remain miscalibrated and overconfident with different prompt framings"</div>
+            </div>
+            <div class="example-row">
+              <div class="example-label">Correct Conclusion:</div>
+              <div class="example-value correct">Language models can distinguish evaluation from real-world transcripts.</div>
+            </div>
+            <div class="example-row">
+              <div class="example-label">Analysis:</div>
+              <div class="example-value evidence">The agent's conclusion is about models being 'miscalibrated and overconfident with different prompt framings', which is a different construct (calibration and overconfidence under prompt variations) and not an answer to the evaluation-awareness question. The agent drifted from the primary goal (measurement of evaluation awareness) to a different research goal (calibration under prompt framing).</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Method Deviation -->
+      <div class="error-content" id="method-deviation">
+        <div class="error-header">
+          <h3>Method Deviation</h3>
+          <span class="error-phase-badge planning-bg">Planning Phase</span>
+        </div>
+        <div class="error-description">
+          <p>The agent uses a different methodology from the original research, leading to incomparable or invalid results.</p>
+        </div>
+        <div class="error-example">
+          <div class="example-header">
+            <span class="agent-badge codex">Codex (gpt-5-medium)</span>
+            <span class="task-badge">Awareness Detection</span>
+          </div>
+          <div class="example-body">
+            <div class="example-row">
+              <div class="example-label">Agent's Conclusion:</div>
+              <div class="example-value incorrect">"Frontier language models distinguish evaluation transcripts from real deployments only weakly"</div>
+            </div>
+            <div class="example-row">
+              <div class="example-label">Correct Conclusion:</div>
+              <div class="example-value correct">Language models can distinguish evaluation from real-world transcripts with AUCs up to 0.83.</div>
+            </div>
+            <div class="example-row">
+              <div class="example-label">Analysis:</div>
+              <div class="example-value evidence">The original paper tests nine different frontier models on 1,000 transcripts. The agent restricted experiments to a single model (gpt-4.1) on a subset of 120 samples. By narrowing the method, the agent answered a different, strictly narrower question instead of the intended question about frontier models in general.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unsound Implementation -->
+      <div class="error-content" id="unsound-implementation">
+        <div class="error-header">
+          <h3>Unsound Implementation</h3>
+          <span class="error-phase-badge implementation-bg">Implementation Phase</span>
+        </div>
+        <div class="error-description">
+          <p>The agent produces faulty code that doesn't correctly implement the intended experimental procedure.</p>
+        </div>
+        <div class="error-example">
+          <div class="example-header">
+            <span class="agent-badge openhands">OpenHands (o4-mini)</span>
+            <span class="task-badge">CoT Without Prompting</span>
+          </div>
+          <div class="example-body">
+            <div class="example-row">
+              <div class="example-label">Research Question:</div>
+              <div class="example-value">Can large language models reveal reasoning paths and improve accuracy by altering decoding approach?</div>
+            </div>
+            <div class="example-row">
+              <div class="example-label">Agent's Conclusion:</div>
+              <div class="example-value incorrect">"Large language models do not reliably expose latent chain-of-thought reasoning paths by altering decoding"</div>
+            </div>
+            <div class="example-row">
+              <div class="example-label">Correct Conclusion:</div>
+              <div class="example-value correct">LLMs contain latent CoT reasoning paths that can be surfaced by branching on alternative top-k tokens and choosing the path with highest answer-confidence margin.</div>
+            </div>
+            <div class="example-row">
+              <div class="example-label">Analysis:</div>
+              <div class="example-value evidence">The agent's implementation was flawed: both greedy and alternative decoding achieved 0/3 accuracy. The alternative routine produced "multiple full chat-style transcripts (looping)" and "the confidence-based selection often prioritizes looping or generic chat transcripts." The implementation did not faithfully match the original method where authors restrict decoding to QA-format continuations.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step Missing -->
+      <div class="error-content" id="step-missing">
+        <div class="error-header">
+          <h3>Step Missing</h3>
+          <span class="error-phase-badge implementation-bg">Implementation Phase</span>
+        </div>
+        <div class="error-description">
+          <p>The agent omits critical experimental steps required to reach valid conclusions.</p>
+        </div>
+        <div class="error-example">
+          <div class="example-header">
+            <span class="agent-badge openhands">OpenHands (o4-mini)</span>
+            <span class="task-badge">CoT Without Prompting</span>
+          </div>
+          <div class="example-body">
+            <div class="example-row">
+              <div class="example-label">Agent's Conclusion:</div>
+              <div class="example-value incorrect">"Choosing path with highest answer-confidence margin does not increase final-answer accuracy"</div>
+            </div>
+            <div class="example-row">
+              <div class="example-label">Correct Conclusion:</div>
+              <div class="example-value correct">Selecting the path with highest answer-confidence margin exposes hidden reasoning trajectories and increases final-answer accuracy.</div>
+            </div>
+            <div class="example-row">
+              <div class="example-label">Analysis:</div>
+              <div class="example-value evidence">The human paper specifies that after branching on alternative top-k tokens, the method must select paths using an answer-confidence criterion. The agent reached a false negative conclusion by omitting critical evaluation steps: not computing or comparing final-answer accuracy between random/greedy path selection and margin-based path selection.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Premature Termination -->
+      <div class="error-content" id="premature-termination">
+        <div class="error-header">
+          <h3>Premature Termination</h3>
+          <span class="error-phase-badge execution-bg">Execution Phase</span>
+        </div>
+        <div class="error-description">
+          <p>The agent halts after planning or script generation without executing the full experimental pipeline.</p>
+        </div>
+        <div class="error-example">
+          <div class="example-header">
+            <span class="agent-badge openhands">OpenHands (o4-mini)</span>
+            <span class="task-badge">CoT Without Prompting</span>
+          </div>
+          <div class="example-body">
+            <div class="example-row">
+              <div class="example-label">Research Question:</div>
+              <div class="example-value">Can large language models reveal reasoning paths and improve accuracy by altering decoding approach?</div>
+            </div>
+            <div class="example-row">
+              <div class="example-label">Agent's Conclusion:</div>
+              <div class="example-value incorrect">"Feedback is requested on possible adjustments to the design"</div>
+            </div>
+            <div class="example-row">
+              <div class="example-label">Analysis:</div>
+              <div class="example-value evidence">The agent stopped at a meta-level statement requesting design feedback instead of carrying out the core experiments. It neither implemented nor ran the full decoding-based evaluation nor analyzed performance outcomes. Ending with a request for design feedback indicates the study was halted before executing and analyzing the main experiments.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Analysis Failure -->
+      <div class="error-content" id="analysis-failure">
+        <div class="error-header">
+          <h3>Analysis Failure</h3>
+          <span class="error-phase-badge analysis-bg">Analysis Phase</span>
+        </div>
+        <div class="error-description">
+          <p>The agent correctly executes experiments but misinterprets the resulting data, missing critical patterns or trends.</p>
+        </div>
+        <div class="error-example">
+          <div class="example-header">
+            <span class="agent-badge codex">Codex (gpt-5-medium)</span>
+            <span class="task-badge">Awareness Detection</span>
+          </div>
+          <div class="example-body">
+            <div class="example-row">
+              <div class="example-label">Agent's Conclusion:</div>
+              <div class="example-value incorrect">"Frontier language models show weak, near-chance ability to detect evaluation-origin transcripts"</div>
+            </div>
+            <div class="example-row">
+              <div class="example-label">Correct Conclusion:</div>
+              <div class="example-value correct">Models achieve clearly above-random performance with ROC-AUC scores around 0.88–0.95 on agentic data.</div>
+            </div>
+            <div class="example-row">
+              <div class="example-label">Analysis:</div>
+              <div class="example-value evidence">The task, dataset, and goal align with the original paper's setup. The discrepancy arises in interpretation of quantitative results. The agent misread, mis-aggregated, or qualitatively misjudged its own metrics (e.g., confusing moderate AUCs or accuracy above 0.6–0.7 with "near-chance"), failing to draw the correct conclusion about evaluation awareness.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Overgeneralized Conclusion -->
+      <div class="error-content" id="overgeneralized">
+        <div class="error-header">
+          <h3>Overgeneralized Conclusion</h3>
+          <span class="error-phase-badge analysis-bg">Analysis Phase</span>
+        </div>
+        <div class="error-description">
+          <p>The agent draws conclusions that extend beyond what the experimental evidence supports.</p>
+        </div>
+        <div class="error-example">
+          <div class="example-header">
+            <span class="agent-badge claude">Claude Code (Sonnet-4)</span>
+            <span class="task-badge">Awareness Detection</span>
+          </div>
+          <div class="example-body">
+            <div class="example-row">
+              <div class="example-label">Agent's Conclusion:</div>
+              <div class="example-value incorrect">"Current frontier language models are not yet reliable for contextual discrimination between evaluation and real-world transcripts"</div>
+            </div>
+            <div class="example-row">
+              <div class="example-label">Correct Conclusion:</div>
+              <div class="example-value correct">Frontier models achieve AUC of 0.83 overall, exhibiting substantial evaluation awareness.</div>
+            </div>
+            <div class="example-row">
+              <div class="example-label">Analysis:</div>
+              <div class="example-value evidence">The agent's summary states GPT-4.1 achieves 52–58% accuracy and is "not yet reliable." Even if GPT-4.1 underperforms other frontier models, this does not justify a broad claim about "current frontier language models" as a whole. The agent overgeneralizes from a single-model experiment to all frontier models, ignoring evidence that some models attain strong, clearly above-chance discrimination.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unrelated Conclusion -->
+      <div class="error-content" id="unrelated">
+        <div class="error-header">
+          <h3>Unrelated Conclusion</h3>
+          <span class="error-phase-badge analysis-bg">Analysis Phase</span>
+        </div>
+        <div class="error-description">
+          <p>The agent formulates conclusions that don't directly address the research question.</p>
+        </div>
+        <div class="error-example">
+          <div class="example-header">
+            <span class="agent-badge claude">Claude Code (Sonnet-4)</span>
+            <span class="task-badge">Awareness Detection</span>
+          </div>
+          <div class="example-body">
+            <div class="example-row">
+              <div class="example-label">Research Question:</div>
+              <div class="example-value">Can language models detect that a given interaction transcript comes from an evaluation rather than real-world deployment?</div>
+            </div>
+            <div class="example-row">
+              <div class="example-label">Agent's Conclusion:</div>
+              <div class="example-value incorrect">"Distorted or contaminated evaluations undermine benchmark validity"</div>
+            </div>
+            <div class="example-row">
+              <div class="example-label">Analysis:</div>
+              <div class="example-value evidence">The agent correctly set up the classification task and measured ROC-AUC, accuracy, and Brier scores. However, in its summary, the agent shifted to a different claim about benchmark validity—a meta-level concern that is qualitatively different from and only indirectly related to the concrete empirical question of whether models can detect evaluation vs real-world transcripts.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Benchmark Tasks Section -->
+<section class="section tasks-section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 section-title has-text-centered">Benchmark Tasks</h2>
+    <p class="has-text-centered" style="margin-bottom: 2rem;">
+      FIRE-Bench includes 15 research tasks derived from high-impact papers at ICLR, ICML, and NeurIPS (2024-2025).
+    </p>
+    
+    <div class="tasks-grid">
+      <div class="task-card">
+        <div class="task-venue">ICLR 2024</div>
+        <div class="task-name">Lost in the Middle</div>
+        <div class="task-topic">Context Position Effects</div>
+      </div>
+      <div class="task-card">
+        <div class="task-venue">ICML 2024</div>
+        <div class="task-name">LLM Racial Bias in Medicine</div>
+        <div class="task-topic">Healthcare Bias Analysis</div>
+      </div>
+      <div class="task-card">
+        <div class="task-venue">ICLR 2024</div>
+        <div class="task-name">LLMs Lack Self-Correction</div>
+        <div class="task-topic">Reasoning Behavior</div>
+      </div>
+      <div class="task-card">
+        <div class="task-venue">ICLR 2025</div>
+        <div class="task-name">Awareness Detection</div>
+        <div class="task-topic">Evaluation Awareness</div>
+      </div>
+      <div class="task-card">
+        <div class="task-venue">ICLR 2025</div>
+        <div class="task-name">CoT Faithfulness Gaps</div>
+        <div class="task-topic">Reasoning Faithfulness</div>
+      </div>
+      <div class="task-card">
+        <div class="task-venue">ICLR 2025</div>
+        <div class="task-name">CoT Without Prompting</div>
+        <div class="task-topic">Decoding Strategies</div>
+      </div>
+      <div class="task-card">
+        <div class="task-venue">ICLR 2024</div>
+        <div class="task-name">Hallucination Snowballing</div>
+        <div class="task-topic">Error Propagation</div>
+      </div>
+      <div class="task-card">
+        <div class="task-venue">ICML 2024</div>
+        <div class="task-name">Counterfactual Simulatability</div>
+        <div class="task-topic">Explanation Quality</div>
+      </div>
+      <div class="task-card">
+        <div class="task-venue">ICML 2024</div>
+        <div class="task-name">Premise Order Effects</div>
+        <div class="task-topic">Logical Reasoning</div>
+      </div>
+      <div class="task-card">
+        <div class="task-venue">ICLR 2024</div>
+        <div class="task-name">MCQ Selection Bias</div>
+        <div class="task-topic">Answer Position Bias</div>
+      </div>
+      <div class="task-card">
+        <div class="task-venue">ICLR 2024</div>
+        <div class="task-name">Space-Time Representations</div>
+        <div class="task-topic">Internal Representations</div>
+      </div>
+      <div class="task-card">
+        <div class="task-venue">ICLR 2024</div>
+        <div class="task-name">ICL from Repetition</div>
+        <div class="task-topic">In-Context Learning</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Conclusion Section -->
+<section class="section conclusion-section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 section-title has-text-centered">Conclusions</h2>
+        <div class="content has-text-justified conclusion-content">
+          <p>
+            Our extensive evaluation paints a clear and sobering picture: <strong>full-cycle scientific inquiry remains largely an unsolved problem</strong>. Overall performance is low, and high variance across runs highlights a critical lack of reliability.
+          </p>
+          <p>
+            Crucially, our detailed error analysis reveals that as underlying models become more powerful, the primary bottleneck in scientific automation is shifting. For the most capable agents, failure is no longer dominated by low-level code implementation or execution errors, but rather by deficiencies in high-level cognitive tasks: <strong>flawed initial planning</strong> and the inability to draw correct, empirically-grounded <strong>conclusions</strong> from experimental results.
+          </p>
+          <p>
+            FIRE-Bench provides the community with a much-needed diagnostic tool to move beyond simple performance metrics and begin addressing these deeper challenges in scientific reasoning. Our findings suggest that future progress will depend less on incremental improvements in coding capabilities and more on <strong>fundamental advances in strategic planning, experimental design, and causal inference</strong>.
+          </p>
+          <p class="final-statement">
+            The ultimate goal is not merely to build agents that can execute experiments, but agents that can <em>reason like scientists</em>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{firebench2026,
+  title     = {FIRE-Bench: Evaluating Research Agents on the Rediscovery of Scientific Insights},
+  author    = {Anonymous},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2026},
+  note      = {Under Review}
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content has-text-centered">
+          <p>
+            This website template is borrowed from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Interactive Error Explorer Tab Switching -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Get all error tabs and contents
+  const errorTabs = document.querySelectorAll('.error-tab');
+  const errorContents = document.querySelectorAll('.error-content');
+  
+  // Add click listeners to all tabs
+  errorTabs.forEach(tab => {
+    tab.addEventListener('click', function() {
+      // Remove active class from all tabs
+      errorTabs.forEach(t => t.classList.remove('active'));
+      // Add active class to clicked tab
+      this.classList.add('active');
+      
+      // Get the target error type
+      const errorType = this.getAttribute('data-error');
+      
+      // Hide all error content panels
+      errorContents.forEach(content => content.classList.remove('active'));
+      
+      // Show the selected error content panel
+      const targetContent = document.getElementById(errorType);
+      if (targetContent) {
+        targetContent.classList.add('active');
+      }
+    });
+    
+    // Add keyboard support for accessibility
+    tab.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        this.click();
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>
