@@ -33,9 +33,6 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <div class="venue-badge">
-            <span class="tag is-medium">ICLR 2026 (Under Review)</span>
-          </div>
           <h1 class="title is-1 publication-title">
             <span class="fire-logo">🔥</span> FIRE-Bench
           </h1>
@@ -85,7 +82,7 @@
                       <i class="fas fa-database"></i>
                   </span>
                   <span>Benchmark</span>
-                </a>
+                  </a>
               </span>
             </div>
 
@@ -111,28 +108,28 @@
                 <li><span class="cross">✗</span> Single performance metrics are too coarse-grained</li>
                 <li><span class="check">✓</span> <strong>FIRE-Bench:</strong> Verifiable insight rediscovery with grounded evaluation</li>
               </ul>
-            </div>
-          </div>
+    </div>
+  </div>
           <div class="column is-6">
             <div class="stats-grid">
               <div class="stat-card">
-                <div class="stat-number">23</div>
+                <div class="stat-number">30</div>
                 <div class="stat-label">Research Tasks</div>
-              </div>
+        </div>
               <div class="stat-card">
                 <div class="stat-number">4</div>
                 <div class="stat-label">Evaluation Stages</div>
-              </div>
+        </div>
               <div class="stat-card">
                 <div class="stat-number">50.1</div>
                 <div class="stat-label">Best F₁ Score</div>
-              </div>
+        </div>
               <div class="stat-card">
                 <div class="stat-number">14</div>
                 <div class="stat-label">Error Categories</div>
-              </div>
-            </div>
-          </div>
+        </div>
+        </div>
+        </div>
         </div>
       </div>
     </div>
@@ -142,75 +139,63 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-    <!-- Abstract. -->
+    <!-- Introduction. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3 section-title">Abstract</h2>
+        <h2 class="title is-3 section-title">Introduction</h2>
         <div class="content has-text-justified abstract-content">
           <p>
-            Autonomous agents powered by large language models (LLMs) promise to accelerate scientific discovery, but rigorously evaluating their capacity for <strong>genuine discovery</strong> remains a critical challenge. Current evaluation benchmarks face a dilemma: they either rely on LLM-as-judge evaluations of auto-generated papers, which are unreliable due to lack of verifiable ground truth, or focus on optimizing single performance metrics that serve as a coarse proxy for genuine discovery.
+            We introduce <strong>FIRE-Bench</strong> (<strong>F</strong>ull-cycle <strong>I</strong>nsight <strong>R</strong>ediscovery <strong>E</strong>valuation), a benchmark that evaluates AI research agents by tasking them with the <em>verifiable rediscovery</em> of established scientific findings from recent ML research. Given only a high-level research question, agents must autonomously design experiments, implement code, execute their plan, and derive conclusions. Our evaluation of state-of-the-art agents reveals that even frontier models struggle profoundly, with the best achieving only 50.1 F₁, while exhibiting high variance and recurring failure modes—predominantly in planning and analysis rather than implementation.
           </p>
-          <p>
-            To address this, we introduce <strong>FIRE-Bench</strong> (<strong>F</strong>ull-cycle <strong>I</strong>nsight <strong>R</strong>ediscovery <strong>E</strong>valuation). Our benchmark reframes evaluation by tasking agents with the <em>verifiable rediscovery</em> of established scientific findings from recent, high-impact ML research. We provide agents only with the high-level research question from a published study, requiring them to autonomously design experiments, implement code, execute their plan, and derive a conclusion from the evidence.
-          </p>
-          <p>
-            We evaluate a suite of state-of-the-art agents with frontier model backbones (e.g., GPT-5) on FIRE-Bench. Our findings paint a <strong>sobering picture</strong> of current capabilities: even the most advanced agents struggle profoundly, exhibiting low success rates, high variance, and a spectrum of recurring failure modes ranging from flawed experimental design to ungrounded conclusions. FIRE-Bench provides a rigorous, diagnostic framework for measuring and driving progress towards AI agents capable of genuine scientific discovery.
-          </p>
+        </div>
+        
+        <!-- Comparison Table -->
+        <div class="comparison-table-wrapper" style="margin-top: 2rem;">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Paradigm</th>
+                <th>Full Cycle</th>
+                <th>Insight Driven</th>
+                <th>Grounded Eval.</th>
+                <th>Method. Explor.</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Method Replication / Engineering</td>
+                <td><span class="check-mark">✓</span></td>
+                <td><span class="cross-mark">✗</span></td>
+                <td><span class="check-mark">✓</span></td>
+                <td><span class="cross-mark">✗</span></td>
+              </tr>
+              <tr>
+                <td>Isolated Stage Automation</td>
+                <td><span class="cross-mark">✗</span></td>
+                <td><span class="cross-mark">✗</span></td>
+                <td><span class="check-mark">✓</span></td>
+                <td><span class="cross-mark">✗</span></td>
+              </tr>
+              <tr>
+                <td>Full Paper Generation</td>
+                <td><span class="check-mark">✓</span></td>
+                <td><span class="check-mark">✓</span></td>
+                <td><span class="cross-mark">✗</span></td>
+                <td><span class="check-mark">✓</span></td>
+              </tr>
+              <tr class="highlight-row">
+                <td><strong>🔥 FIRE-Bench</strong></td>
+                <td><span class="check-mark">✓</span></td>
+                <td><span class="check-mark">✓</span></td>
+                <td><span class="check-mark">✓</span></td>
+                <td><span class="check-mark">✓</span></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
-    <!--/ Abstract. -->
-  </div>
-</section>
-
-
-<!-- Comparison Table -->
-<section class="section comparison-section">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3 section-title has-text-centered">Benchmark Comparison</h2>
-    <div class="comparison-table-wrapper">
-      <table class="comparison-table">
-        <thead>
-          <tr>
-            <th>Paradigm</th>
-            <th>Full Cycle</th>
-            <th>Insight Driven</th>
-            <th>Grounded Eval.</th>
-            <th>Method. Explor.</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Method Replication / Engineering</td>
-            <td><span class="check-mark">✓</span></td>
-            <td><span class="cross-mark">✗</span></td>
-            <td><span class="check-mark">✓</span></td>
-            <td><span class="cross-mark">✗</span></td>
-          </tr>
-          <tr>
-            <td>Isolated Stage Automation</td>
-            <td><span class="cross-mark">✗</span></td>
-            <td><span class="cross-mark">✗</span></td>
-            <td><span class="check-mark">✓</span></td>
-            <td><span class="cross-mark">✗</span></td>
-          </tr>
-          <tr>
-            <td>Full Paper Generation</td>
-            <td><span class="check-mark">✓</span></td>
-            <td><span class="check-mark">✓</span></td>
-            <td><span class="cross-mark">✗</span></td>
-            <td><span class="check-mark">✓</span></td>
-          </tr>
-          <tr class="highlight-row">
-            <td><strong>🔥 FIRE-Bench</strong></td>
-            <td><span class="check-mark">✓</span></td>
-            <td><span class="check-mark">✓</span></td>
-            <td><span class="check-mark">✓</span></td>
-            <td><span class="check-mark">✓</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <!--/ Introduction. -->
   </div>
 </section>
 
@@ -233,40 +218,6 @@
 </section>
 
 
-<!-- Methodology Section -->
-<section class="section methodology-section">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3 section-title has-text-centered">Methodology</h2>
-    
-    <div class="methodology-grid">
-      <div class="method-card">
-        <div class="method-icon">🌳</div>
-        <h4 class="method-title">Research-Problem Tree</h4>
-        <p>We formalize the intellectual structure of empirical analysis papers as hierarchical research-problem trees, encoding the reasoning trajectory from broad questions to specific experimental tasks.</p>
-      </div>
-      
-      <div class="method-card">
-        <div class="method-icon">🎯</div>
-        <h4 class="method-title">Constrained Rediscovery</h4>
-        <p>Agents receive only the high-level research question while methodology and conclusions are withheld, creating an open-ended discovery problem with verifiable ground truth.</p>
-      </div>
-      
-      <div class="method-card">
-        <div class="method-icon">📊</div>
-        <h4 class="method-title">Claim-Level Evaluation</h4>
-        <p>Following RAGChecker, we perform fine-grained analysis by decomposing conclusions into atomic claims and computing Precision, Recall, and F₁ scores.</p>
-      </div>
-      
-      <div class="method-card">
-        <div class="method-icon">🔍</div>
-        <h4 class="method-title">Error Taxonomy</h4>
-        <p>We trace errors across four research stages—Planning, Implementation, Execution, and Analysis—with 14 distinct error categories.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
 <!-- Results Section -->
 <section class="section results-section">
   <div class="container is-max-desktop">
@@ -277,7 +228,7 @@
         <h4>📉 Low Overall Performance</h4>
         <p>The best-performing agent (Claude Code) achieves only <strong>50.1 F₁</strong> on average. Even frontier models struggle with full-cycle scientific inquiry.</p>
       </div>
-      
+
       <div class="result-highlight">
         <h4>📈 High Variance</h4>
         <p>Extremely high standard deviations across runs indicate a critical lack of reliability. Success often appears to be a "lottery."</p>
@@ -289,68 +240,56 @@
       </div>
     </div>
 
-    <!-- Results Table -->
-    <div class="results-table-wrapper">
-      <h3 class="title is-4 has-text-centered" style="margin-top: 2rem;">Performance Comparison (F₁ Scores)</h3>
-      <table class="results-table">
+    <!-- Performance Table -->
+    <div class="performance-table-wrapper">
+      <h3 class="title is-4 has-text-centered" style="margin-top: 2rem;">Average Performance (All 30 Tasks)</h3>
+      <p class="has-text-centered" style="color: rgba(255,255,255,0.6); margin-bottom: 1.5rem; font-size: 0.95rem;">Mean scores with standard deviation across three independent trials</p>
+      
+      <table class="performance-table">
         <thead>
           <tr>
-            <th>Task</th>
-            <th>OpenHands<br/><small>(o4-mini)</small></th>
-            <th>OpenHands<br/><small>(gpt-5)</small></th>
-            <th>Codex CLI<br/><small>(gpt-5-med)</small></th>
-            <th>Claude Code<br/><small>(Sonnet-4)</small></th>
+            <th class="col-agent">Agent</th>
+            <th class="col-metric">Precision</th>
+            <th class="col-metric">Recall</th>
+            <th class="col-metric">F₁ Score</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Lost in the Middle</td>
-            <td>57.0±49.6</td>
-            <td>71.1±7.7</td>
-            <td class="best-score">91.7±14.4</td>
-            <td>60.1±30.0</td>
+          <tr class="best-row">
+            <td class="agent-cell">
+              <span class="agent-name">Claude Code</span>
+              <span class="agent-model">Sonnet-4</span>
+            </td>
+            <td>52.1 <span class="std">±26.1</span></td>
+            <td>48.3 <span class="std">±24.8</span></td>
+            <td class="f1-cell"><strong>50.1</strong> <span class="std">±23.4</span></td>
           </tr>
           <tr>
-            <td>LLM Racial Bias in Medicine</td>
-            <td class="best-score">34.2±31.7</td>
-            <td>0.0±0.0</td>
-            <td>10.5±18.2</td>
-            <td>0.0±0.0</td>
+            <td class="agent-cell">
+              <span class="agent-name">OpenHands</span>
+              <span class="agent-model">gpt-5</span>
+            </td>
+            <td>44.2 <span class="std">±19.2</span></td>
+            <td>39.5 <span class="std">±17.1</span></td>
+            <td class="f1-cell">41.7 <span class="std">±17.9</span></td>
           </tr>
           <tr>
-            <td>LLMs Lack Self-Correction</td>
-            <td>20.0±34.6</td>
-            <td>26.7±23.1</td>
-            <td>13.3±23.1</td>
-            <td class="best-score">42.6±10.7</td>
+            <td class="agent-cell">
+              <span class="agent-name">Codex CLI</span>
+              <span class="agent-model">gpt-5-medium</span>
+            </td>
+            <td>43.8 <span class="std">±18.5</span></td>
+            <td>37.4 <span class="std">±15.8</span></td>
+            <td class="f1-cell">40.4 <span class="std">±16.3</span></td>
           </tr>
           <tr>
-            <td>CoT Faithfulness Gaps</td>
-            <td>20.5±35.5</td>
-            <td>61.6±41.1</td>
-            <td class="best-score">72.7±23.0</td>
-            <td>66.7±28.9</td>
-          </tr>
-          <tr>
-            <td>CoT Without Prompting</td>
-            <td>16.7±28.9</td>
-            <td>26.4±28.0</td>
-            <td>13.8±23.9</td>
-            <td class="best-score">82.6±23.0</td>
-          </tr>
-          <tr>
-            <td>Hallucination Snowballing</td>
-            <td>58.0±50.8</td>
-            <td>69.2±19.5</td>
-            <td class="best-score">80.9±21.8</td>
-            <td>77.6±4.3</td>
-          </tr>
-          <tr class="avg-row">
-            <td><strong>Average (All 23 Tasks)</strong></td>
-            <td>34.8±28.8</td>
-            <td>41.7±17.9</td>
-            <td>40.4±16.3</td>
-            <td class="best-score"><strong>50.1±23.4</strong></td>
+            <td class="agent-cell">
+              <span class="agent-name">OpenHands</span>
+              <span class="agent-model">o4-mini</span>
+            </td>
+            <td>38.9 <span class="std">±30.2</span></td>
+            <td>31.5 <span class="std">±27.9</span></td>
+            <td class="f1-cell">34.8 <span class="std">±28.8</span></td>
           </tr>
         </tbody>
       </table>
@@ -365,7 +304,7 @@
     <h2 class="title is-3 section-title has-text-centered">Interactive Error Explorer</h2>
     <p class="has-text-centered" style="margin-bottom: 2rem; color: var(--text-secondary);">
       Click on any error type to view real examples from our experiments. Explore how different agents fail at various stages of the research process.
-    </p>
+          </p>
     
     <!-- Error Type Tabs -->
     <div class="error-tabs">
@@ -388,7 +327,7 @@
         <div class="tab-buttons">
           <button class="error-tab" data-error="premature-termination">Premature Termination</button>
         </div>
-      </div>
+          </div>
       <div class="error-tab-group">
         <div class="tab-group-header analysis-bg">🔬 Analysis</div>
         <div class="tab-buttons">
@@ -666,7 +605,7 @@
   <div class="container is-max-desktop">
     <h2 class="title is-3 section-title has-text-centered">Benchmark Tasks</h2>
     <p class="has-text-centered" style="margin-bottom: 2rem;">
-      FIRE-Bench includes 23 research tasks derived from high-impact papers at ICLR, ICML, and NeurIPS (2024-2025).
+      FIRE-Bench includes 30 research tasks derived from high-impact papers at ICLR, ICML, and NeurIPS (2024-2025).
     </p>
     
     <div class="tasks-grid">
