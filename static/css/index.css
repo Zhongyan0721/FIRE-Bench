@@ -19,6 +19,8 @@ body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   background: #FFFFFF;
   color: var(--text-primary);
+  font-size: 1.1rem;
+  line-height: 1.6;
 }
 
 /* ==========================================
@@ -272,7 +274,7 @@ body {
 }
 
 .method-step-title {
-  font-size: 0.95rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: var(--text-primary);
   margin: 0;
@@ -283,7 +285,7 @@ body {
 }
 
 .method-step-desc {
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   color: var(--text-secondary);
   line-height: 1.5;
   margin-bottom: 0.75rem;
@@ -303,16 +305,16 @@ body {
   display: flex;
   align-items: flex-start;
   gap: 0.5rem;
-  font-size: 0.78rem;
+  font-size: 0.9rem;
   color: var(--text-primary);
   background: #FFFFFF;
-  padding: 0.4rem 0.6rem;
+  padding: 0.5rem 0.75rem;
   border-radius: 6px;
   border: 1px solid var(--border-light);
 }
 
 .detail-icon {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   flex-shrink: 0;
 }
 
@@ -333,7 +335,7 @@ body {
 }
 
 .metric-name {
-  font-size: 0.78rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: var(--fire-orange);
   min-width: 55px;
@@ -341,7 +343,7 @@ body {
 
 .metric-formula {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.7rem;
+  font-size: 0.85rem;
   color: var(--text-primary);
   background: var(--bg-light);
   padding: 0.3rem 0.5rem;
@@ -357,7 +359,7 @@ body {
   flex-direction: column;
   align-items: center;
   vertical-align: middle;
-  font-size: 0.68rem;
+  font-size: 0.8rem;
 }
 
 .fraction .numerator {
@@ -372,7 +374,7 @@ body {
 }
 
 .metric-desc {
-  font-size: 0.72rem;
+  font-size: 0.85rem;
   color: var(--text-secondary);
   line-height: 1.3;
 }
@@ -435,7 +437,7 @@ body {
 }
 
 .highlight-desc {
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: var(--text-secondary);
   line-height: 1.5;
 }
@@ -573,12 +575,12 @@ body {
 
 .performance-table .agent-model {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   color: var(--text-secondary);
 }
 
 .performance-table .std {
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   color: var(--text-secondary);
 }
 
@@ -623,7 +625,7 @@ body {
 }
 
 .finding-content p {
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: var(--text-secondary);
   margin: 0;
 }
@@ -876,7 +878,7 @@ body {
 }
 
 .task-venue-tag {
-  font-size: 0.7rem;
+  font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--fire-orange);
@@ -892,7 +894,7 @@ body {
 }
 
 .task-description {
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: var(--text-secondary);
   line-height: 1.5;
   margin-bottom: 1rem;
@@ -905,7 +907,7 @@ body {
 }
 
 .task-topic-tag {
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   padding: 0.25rem 0.75rem;
   background: var(--bg-light);
   border-radius: 20px;
@@ -1017,7 +1019,7 @@ body {
 }
 
 .phase-errors li {
-  font-size: 0.8rem;
+  font-size: 0.95rem;
   color: var(--text-secondary);
   padding: 0.25rem 0;
 }
@@ -1097,12 +1099,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0.7;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition: transform 0.2s ease;
 }
 
 .institution-logo:hover {
-  opacity: 1;
   transform: scale(1.05);
 }
 
