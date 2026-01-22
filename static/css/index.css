@@ -120,7 +120,31 @@ body {
 
 .publication-authors {
   color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.publication-authors sup {
+  font-size: 0.7em;
+  margin-left: 1px;
+}
+
+.publication-affiliations {
+  color: var(--text-secondary);
   margin-bottom: 1.5rem;
+}
+
+.affiliation-block {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.affiliation-block sup {
+  font-size: 0.8em;
+}
+
+.affiliation-note {
+  font-style: italic;
+  opacity: 0.85;
 }
 
 .publication-links {
@@ -158,84 +182,42 @@ body {
 }
 
 /* ==========================================
-   2. VIDEO/ANIMATION PLACEHOLDER
+   2. FRAMEWORK ANIMATION VIDEO
    ========================================== */
 .video-section {
   background: #FFFFFF;
   padding: 2rem 1.5rem 4rem;
 }
 
-.video-placeholder {
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  border-radius: 16px;
-  padding: 4rem 2rem;
-  text-align: center;
-  border: 2px dashed var(--border-light);
-  max-width: 900px;
+.video-container {
+  max-width: 1000px;
   margin: 0 auto;
 }
 
-.video-placeholder-content {
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.video-icon {
-  font-size: 4rem;
-  color: var(--text-secondary);
-  margin-bottom: 1.5rem;
-  opacity: 0.5;
-}
-
-.video-placeholder h3 {
+.video-title {
   font-size: 1.5rem;
   font-weight: 600;
   color: var(--text-primary);
   margin-bottom: 0.75rem;
 }
 
-.video-placeholder > .video-placeholder-content > p {
+.video-description {
   color: var(--text-secondary);
   font-size: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   line-height: 1.6;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.video-flow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  margin-top: 1.5rem;
-}
-
-.flow-step {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 1rem 1.25rem;
-  background: #FFFFFF;
+.framework-video {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
   border-radius: 12px;
-  border: 1px solid var(--border-light);
-  min-width: 100px;
-}
-
-.flow-icon {
-  font-size: 1.75rem;
-}
-
-.flow-label {
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--text-primary);
-}
-
-.flow-arrow {
-  font-size: 1.5rem;
-  color: var(--text-secondary);
-  font-weight: 300;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  background: #000;
 }
 
 /* ==========================================
@@ -465,6 +447,13 @@ body {
   margin: 0;
 }
 
+.leaderboard-note {
+  margin-top: 2rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
 @media screen and (max-width: 768px) {
   .key-findings {
     grid-template-columns: 1fr;
@@ -527,6 +516,12 @@ body {
   gap: 1.25rem;
 }
 
+.task-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
 .task-card-interactive {
   background: #FFFFFF;
   border-radius: 12px;
@@ -534,8 +529,10 @@ body {
   border: 1px solid var(--border-light);
   transition: all 0.2s ease;
   cursor: pointer;
+  height: 100%;
 }
 
+.task-card-link:hover .task-card-interactive,
 .task-card-interactive:hover {
   border-color: var(--fire-orange);
   transform: translateY(-2px);
@@ -779,16 +776,16 @@ body {
     font-size: 1.1rem;
   }
 
-  .video-placeholder {
-    padding: 2rem 1rem;
+  .video-container {
+    padding: 0 1rem;
   }
 
-  .video-flow {
-    flex-direction: column;
+  .video-title {
+    font-size: 1.25rem;
   }
 
-  .flow-arrow {
-    transform: rotate(90deg);
+  .video-description {
+    font-size: 0.9rem;
   }
 
   .section-title {

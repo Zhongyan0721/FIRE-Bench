@@ -66,7 +66,14 @@
             Can AI agents rediscover scientific insights? We benchmark full-cycle research automation with verifiable evaluation.
           </p>
           <div class="is-size-6 publication-authors">
-            <span class="author-block">Anonymous Authors</span>
+            <span class="author-block">
+              Zhen Wang*<sup>1</sup>, Fan Bai*<sup>2</sup>, Zhongyan Luo*<sup>1</sup>, Jinyan Su<sup>3</sup>, Kaiser Sun<sup>2</sup>, Weiqi Liu<sup>1</sup>, Albert Chen<sup>1</sup>, Jieyuan Liu<sup>1</sup>, Kun Zhou<sup>1</sup>, Claire Cardie<sup>3</sup>, Mark Dredze<sup>2</sup>, Eric P. Xing<sup>4</sup>, Zhiting Hu<sup>1</sup>
+            </span>
+          </div>
+          <div class="is-size-7 publication-affiliations">
+            <span class="affiliation-block"><sup>1</sup>UC San Diego, <sup>2</sup>Johns Hopkins University, <sup>3</sup>Cornell University, <sup>4</sup>MBZUAI</span>
+            <br>
+            <span class="affiliation-note">* Equal Contribution</span>
           </div>
 
           <div class="publication-links">
@@ -102,38 +109,16 @@
 </section>
 
 
-<!-- 2. VIDEO/ANIMATION PLACEHOLDER -->
+<!-- 2. FRAMEWORK ANIMATION VIDEO -->
 <section class="section video-section" id="framework">
   <div class="container is-max-widescreen">
-    <div class="video-placeholder">
-      <div class="video-placeholder-content">
-        <div class="video-icon">
-          <i class="fas fa-play-circle"></i>
-        </div>
-        <h3>Framework Animation</h3>
-        <p>Papers are parsed into tree-structured tasks, where each node represents an executable, verifiable research step.</p>
-        <div class="video-flow">
-          <div class="flow-step">
-            <span class="flow-icon">📄</span>
-            <span class="flow-label">Research Paper</span>
-          </div>
-          <span class="flow-arrow">→</span>
-          <div class="flow-step">
-            <span class="flow-icon">🌳</span>
-            <span class="flow-label">Task Tree</span>
-          </div>
-          <span class="flow-arrow">→</span>
-          <div class="flow-step">
-            <span class="flow-icon">🤖</span>
-            <span class="flow-label">Agent Execution</span>
-          </div>
-          <span class="flow-arrow">→</span>
-          <div class="flow-step">
-            <span class="flow-icon">✓</span>
-            <span class="flow-label">Verified Results</span>
-          </div>
-        </div>
-      </div>
+    <div class="video-container">
+      <h3 class="video-title has-text-centered">Framework Animation</h3>
+      <p class="video-description has-text-centered">Papers are parsed into tree-structured tasks, where each node represents an executable, verifiable research step.</p>
+      <video class="framework-video" controls autoplay muted loop playsinline>
+        <source src="./static/videos/fire-bench-framework.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
     </div>
   </div>
 </section>
@@ -195,27 +180,27 @@
           </td>
           <td>52.1 <span class="std">±26.1</span></td>
           <td>48.3 <span class="std">±24.8</span></td>
-          <td class="f1-cell"><strong>50.1</strong> <span class="std">±23.4</span></td>
+          <td class="f1-cell"><strong>46.7</strong> <span class="std">±23.4</span></td>
         </tr>
         <tr>
           <td class="rank-cell">2</td>
           <td class="agent-cell">
-            <span class="agent-name">OpenHands</span>
-            <span class="agent-model">gpt-5</span>
+            <span class="agent-name">Codex CLI</span>
+            <span class="agent-model">gpt-5-medium</span>
           </td>
-          <td>44.2 <span class="std">±19.2</span></td>
-          <td>39.5 <span class="std">±17.1</span></td>
-          <td class="f1-cell">41.7 <span class="std">±17.9</span></td>
+          <td>44.83 <span class="std">±24.06</span></td>
+          <td>48.96 <span class="std">±28.51</span></td>
+          <td class="f1-cell">41.93 <span class="std">±25.37</span></td>
         </tr>
         <tr>
           <td class="rank-cell">3</td>
           <td class="agent-cell">
-            <span class="agent-name">Codex CLI</span>
-            <span class="agent-model">gpt-5-medium</span>
+            <span class="agent-name">OpenHands</span>
+            <span class="agent-model">gpt-5</span>
           </td>
-          <td>43.8 <span class="std">±18.5</span></td>
-          <td>37.4 <span class="std">±15.8</span></td>
-          <td class="f1-cell">40.4 <span class="std">±16.3</span></td>
+          <td>41.67 <span class="std">±22.69</span></td>
+          <td>41.42 <span class="std">±24.92</span></td>
+          <td class="f1-cell">37.87 <span class="std">±22.99</span></td>
         </tr>
         <tr>
           <td class="rank-cell">4</td>
@@ -223,9 +208,9 @@
             <span class="agent-name">OpenHands</span>
             <span class="agent-model">o4-mini</span>
           </td>
-          <td>38.9 <span class="std">±30.2</span></td>
-          <td>31.5 <span class="std">±27.9</span></td>
-          <td class="f1-cell">34.8 <span class="std">±28.8</span></td>
+          <td>36.81 <span class="std">±18.50</span></td>
+          <td>36.63 <span class="std">±19.21</span></td>
+          <td class="f1-cell">31.85 <span class="std">±17.56</span></td>
         </tr>
       </tbody>
     </table>
@@ -235,7 +220,7 @@
         <div class="finding-icon">📉</div>
         <div class="finding-content">
           <strong>Low Performance</strong>
-          <p>Best agent achieves only 50.1 F₁</p>
+          <p>Best agent achieves only 46.7 F₁</p>
         </div>
       </div>
       <div class="finding-card">
@@ -249,10 +234,12 @@
         <div class="finding-icon">🧠</div>
         <div class="finding-content">
           <strong>Planning Bottleneck</strong>
-          <p>60.3% of errors from flawed planning</p>
+          <p>73.6% of errors from flawed planning</p>
         </div>
       </div>
     </div>
+
+    <p class="leaderboard-note has-text-centered">More agents are being added...</p>
   </div>
 </section>
 
@@ -273,104 +260,360 @@
     </div>
 
     <div class="tasks-grid-interactive">
-      <div class="task-card-interactive" data-venue="iclr">
-        <div class="task-card-header">
-          <span class="task-venue-tag">ICLR 2024</span>
+      <!-- Original 9 papers for "All" tab -->
+      <a href="https://arxiv.org/abs/2307.03172" target="_blank" class="task-card-link" data-venue="featured" data-featured="true">
+        <div class="task-card-interactive">
+          <div class="task-card-header">
+            <span class="task-venue-tag">TACL 2024</span>
+          </div>
+          <h4 class="task-title">Lost in the Middle</h4>
+          <p class="task-description">Do language models use information equally regardless of its position in context?</p>
+          <div class="task-meta">
+            <span class="task-topic-tag">Context Position Effects</span>
+          </div>
         </div>
-        <h4 class="task-title">Lost in the Middle</h4>
-        <p class="task-description">Do language models use information equally regardless of its position in context?</p>
-        <div class="task-meta">
-          <span class="task-topic-tag">Context Position Effects</span>
-        </div>
-      </div>
+      </a>
 
-      <div class="task-card-interactive" data-venue="icml">
-        <div class="task-card-header">
-          <span class="task-venue-tag">ICML 2024</span>
+      <a href="https://arxiv.org/abs/2401.13867" target="_blank" class="task-card-link" data-venue="featured" data-featured="true">
+        <div class="task-card-interactive">
+          <div class="task-card-header">
+            <span class="task-venue-tag">Nature 2024</span>
+          </div>
+          <h4 class="task-title">LLM Racial Bias in Medicine</h4>
+          <p class="task-description">Do clinical LLMs propagate race-based medical misconceptions?</p>
+          <div class="task-meta">
+            <span class="task-topic-tag">Healthcare Bias</span>
+          </div>
         </div>
-        <h4 class="task-title">LLM Racial Bias in Medicine</h4>
-        <p class="task-description">Do clinical LLMs propagate race-based medical misconceptions?</p>
-        <div class="task-meta">
-          <span class="task-topic-tag">Healthcare Bias</span>
-        </div>
-      </div>
+      </a>
 
-      <div class="task-card-interactive" data-venue="iclr">
-        <div class="task-card-header">
-          <span class="task-venue-tag">ICLR 2024</span>
+      <a href="https://arxiv.org/abs/2310.01798" target="_blank" class="task-card-link" data-venue="featured" data-featured="true">
+        <div class="task-card-interactive">
+          <div class="task-card-header">
+            <span class="task-venue-tag">ICLR 2024</span>
+          </div>
+          <h4 class="task-title">LLMs Lack Self-Correction</h4>
+          <p class="task-description">Can LLMs improve reasoning by self-correction without external feedback?</p>
+          <div class="task-meta">
+            <span class="task-topic-tag">Reasoning Behavior</span>
+          </div>
         </div>
-        <h4 class="task-title">LLMs Lack Self-Correction</h4>
-        <p class="task-description">Can LLMs improve reasoning by self-correction without external feedback?</p>
-        <div class="task-meta">
-          <span class="task-topic-tag">Reasoning Behavior</span>
-        </div>
-      </div>
+      </a>
 
-      <div class="task-card-interactive" data-venue="iclr">
-        <div class="task-card-header">
-          <span class="task-venue-tag">ICLR 2025</span>
+      <a href="https://arxiv.org/abs/2505.23836" target="_blank" class="task-card-link" data-venue="featured" data-featured="true">
+        <div class="task-card-interactive">
+          <div class="task-card-header">
+            <span class="task-venue-tag">arXiv 2025</span>
+          </div>
+          <h4 class="task-title">Awareness Detection</h4>
+          <p class="task-description">Can models detect whether an interaction comes from evaluation or deployment?</p>
+          <div class="task-meta">
+            <span class="task-topic-tag">Evaluation Awareness</span>
+          </div>
         </div>
-        <h4 class="task-title">Awareness Detection</h4>
-        <p class="task-description">Can models detect whether an interaction comes from evaluation or deployment?</p>
-        <div class="task-meta">
-          <span class="task-topic-tag">Evaluation Awareness</span>
-        </div>
-      </div>
+      </a>
 
-      <div class="task-card-interactive" data-venue="iclr">
-        <div class="task-card-header">
-          <span class="task-venue-tag">ICLR 2025</span>
+      <a href="https://arxiv.org/abs/2505.05410" target="_blank" class="task-card-link" data-venue="featured" data-featured="true">
+        <div class="task-card-interactive">
+          <div class="task-card-header">
+            <span class="task-venue-tag">arXiv 2025</span>
+          </div>
+          <h4 class="task-title">CoT Faithfulness Gaps</h4>
+          <p class="task-description">Do chain-of-thought explanations faithfully reflect model reasoning?</p>
+          <div class="task-meta">
+            <span class="task-topic-tag">Reasoning Faithfulness</span>
+          </div>
         </div>
-        <h4 class="task-title">CoT Faithfulness Gaps</h4>
-        <p class="task-description">Do chain-of-thought explanations faithfully reflect model reasoning?</p>
-        <div class="task-meta">
-          <span class="task-topic-tag">Reasoning Faithfulness</span>
-        </div>
-      </div>
+      </a>
 
-      <div class="task-card-interactive" data-venue="iclr">
-        <div class="task-card-header">
-          <span class="task-venue-tag">ICLR 2025</span>
+      <a href="https://arxiv.org/abs/2402.10200" target="_blank" class="task-card-link" data-venue="featured" data-featured="true">
+        <div class="task-card-interactive">
+          <div class="task-card-header">
+            <span class="task-venue-tag">NeurIPS 2024</span>
+          </div>
+          <h4 class="task-title">CoT Without Prompting</h4>
+          <p class="task-description">Can altered decoding reveal latent reasoning paths in LLMs?</p>
+          <div class="task-meta">
+            <span class="task-topic-tag">Decoding Strategies</span>
+          </div>
         </div>
-        <h4 class="task-title">CoT Without Prompting</h4>
-        <p class="task-description">Can altered decoding reveal latent reasoning paths in LLMs?</p>
-        <div class="task-meta">
-          <span class="task-topic-tag">Decoding Strategies</span>
-        </div>
-      </div>
+      </a>
 
-      <div class="task-card-interactive" data-venue="iclr">
-        <div class="task-card-header">
-          <span class="task-venue-tag">ICLR 2024</span>
+      <a href="https://arxiv.org/abs/2305.13534" target="_blank" class="task-card-link" data-venue="featured" data-featured="true">
+        <div class="task-card-interactive">
+          <div class="task-card-header">
+            <span class="task-venue-tag">ICML 2024</span>
+          </div>
+          <h4 class="task-title">Hallucination Snowballing</h4>
+          <p class="task-description">Do LLM hallucinations compound when models build on prior errors?</p>
+          <div class="task-meta">
+            <span class="task-topic-tag">Error Propagation</span>
+          </div>
         </div>
-        <h4 class="task-title">Hallucination Snowballing</h4>
-        <p class="task-description">Do LLM hallucinations compound when models build on prior errors?</p>
-        <div class="task-meta">
-          <span class="task-topic-tag">Error Propagation</span>
-        </div>
-      </div>
+      </a>
 
-      <div class="task-card-interactive" data-venue="icml">
-        <div class="task-card-header">
-          <span class="task-venue-tag">ICML 2024</span>
+      <a href="https://arxiv.org/abs/2307.08678" target="_blank" class="task-card-link" data-venue="featured" data-featured="true">
+        <div class="task-card-interactive">
+          <div class="task-card-header">
+            <span class="task-venue-tag">ICML 2024</span>
+          </div>
+          <h4 class="task-title">Counterfactual Simulatability</h4>
+          <p class="task-description">Can humans predict model behavior changes from explanations?</p>
+          <div class="task-meta">
+            <span class="task-topic-tag">Explanation Quality</span>
+          </div>
         </div>
-        <h4 class="task-title">Counterfactual Simulatability</h4>
-        <p class="task-description">Can humans predict model behavior changes from explanations?</p>
-        <div class="task-meta">
-          <span class="task-topic-tag">Explanation Quality</span>
-        </div>
-      </div>
+      </a>
 
-      <div class="task-card-interactive" data-venue="icml">
-        <div class="task-card-header">
-          <span class="task-venue-tag">ICML 2024</span>
+      <a href="https://arxiv.org/abs/2402.08939" target="_blank" class="task-card-link" data-venue="featured" data-featured="true">
+        <div class="task-card-interactive">
+          <div class="task-card-header">
+            <span class="task-venue-tag">ICML 2024</span>
+          </div>
+          <h4 class="task-title">Premise Order Effects</h4>
+          <p class="task-description">Does the order of logical premises affect LLM reasoning accuracy?</p>
+          <div class="task-meta">
+            <span class="task-topic-tag">Logical Reasoning</span>
+          </div>
         </div>
-        <h4 class="task-title">Premise Order Effects</h4>
-        <p class="task-description">Does the order of logical premises affect LLM reasoning accuracy?</p>
-        <div class="task-meta">
-          <span class="task-topic-tag">Logical Reasoning</span>
+      </a>
+
+      <!-- ICLR Papers (for ICLR tab) -->
+      <a href="https://arxiv.org/abs/2310.01798" target="_blank" class="task-card-link" data-venue="iclr">
+        <div class="task-card-interactive">
+          <div class="task-card-header">
+            <span class="task-venue-tag">ICLR 2024</span>
+          </div>
+          <h4 class="task-title">LLMs Lack Self-Correction</h4>
+          <p class="task-description">Can LLMs improve reasoning by self-correction without external feedback?</p>
+          <div class="task-meta">
+            <span class="task-topic-tag">Reasoning Behavior</span>
+          </div>
         </div>
-      </div>
+      </a>
+
+      <a href="https://arxiv.org/abs/2311.04892" target="_blank" class="task-card-link" data-venue="iclr">
+        <div class="task-card-interactive">
+          <div class="task-card-header">
+            <span class="task-venue-tag">ICLR 2024</span>
+          </div>
+          <h4 class="task-title">Bias Runs Deep</h4>
+          <p class="task-description">Do persona assignments surface implicit reasoning biases in LLMs?</p>
+          <div class="task-meta">
+            <span class="task-topic-tag">Persona Bias</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://arxiv.org/abs/2309.03882" target="_blank" class="task-card-link" data-venue="iclr">
+        <div class="task-card-interactive">
+          <div class="task-card-header">
+            <span class="task-venue-tag">ICLR 2024</span>
+          </div>
+          <h4 class="task-title">Not Robust MCQ Selectors</h4>
+          <p class="task-description">Are LLMs robust to option position changes in multiple choice questions?</p>
+          <div class="task-meta">
+            <span class="task-topic-tag">Selection Bias</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://arxiv.org/abs/2310.11324" target="_blank" class="task-card-link" data-venue="iclr">
+        <div class="task-card-interactive">
+          <div class="task-card-header">
+            <span class="task-venue-tag">ICLR 2024</span>
+          </div>
+          <h4 class="task-title">Prompt Format Sensitivity</h4>
+          <p class="task-description">How sensitive are LLMs to spurious features in prompt design?</p>
+          <div class="task-meta">
+            <span class="task-topic-tag">Prompt Robustness</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://arxiv.org/abs/2310.02207" target="_blank" class="task-card-link" data-venue="iclr">
+        <div class="task-card-interactive">
+          <div class="task-card-header">
+            <span class="task-venue-tag">ICLR 2024</span>
+          </div>
+          <h4 class="task-title">Space and Time Representations</h4>
+          <p class="task-description">Do language models learn coherent representations of space and time?</p>
+          <div class="task-meta">
+            <span class="task-topic-tag">World Models</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://arxiv.org/abs/2306.13063" target="_blank" class="task-card-link" data-venue="iclr">
+        <div class="task-card-interactive">
+          <div class="task-card-header">
+            <span class="task-venue-tag">ICLR 2024</span>
+          </div>
+          <h4 class="task-title">Uncertainty Expression</h4>
+          <p class="task-description">Can LLMs accurately express their uncertainty about answers?</p>
+          <div class="task-meta">
+            <span class="task-topic-tag">Confidence Calibration</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://arxiv.org/abs/2310.00297" target="_blank" class="task-card-link" data-venue="iclr">
+        <div class="task-card-interactive">
+          <div class="task-card-header">
+            <span class="task-venue-tag">ICLR 2024</span>
+          </div>
+          <h4 class="task-title">ICL from Repetitions</h4>
+          <p class="task-description">How do surface repetitions influence in-context learning?</p>
+          <div class="task-meta">
+            <span class="task-topic-tag">In-Context Learning</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://arxiv.org/abs/2409.12183" target="_blank" class="task-card-link" data-venue="iclr">
+        <div class="task-card-interactive">
+          <div class="task-card-header">
+            <span class="task-venue-tag">ICLR 2025</span>
+          </div>
+          <h4 class="task-title">To CoT or Not to CoT</h4>
+          <p class="task-description">When does chain-of-thought actually help LLM reasoning?</p>
+          <div class="task-meta">
+            <span class="task-topic-tag">CoT Analysis</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://arxiv.org/abs/2406.17055" target="_blank" class="task-card-link" data-venue="iclr">
+        <div class="task-card-interactive">
+          <div class="task-card-header">
+            <span class="task-venue-tag">ICLR 2025</span>
+          </div>
+          <h4 class="task-title">Rationality Assumptions</h4>
+          <p class="task-description">Do LLMs assume people are more rational than they really are?</p>
+          <div class="task-meta">
+            <span class="task-topic-tag">Human Modeling</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- ICML Papers (for ICML tab) -->
+      <a href="https://arxiv.org/abs/2305.13534" target="_blank" class="task-card-link" data-venue="icml">
+        <div class="task-card-interactive">
+          <div class="task-card-header">
+            <span class="task-venue-tag">ICML 2024</span>
+          </div>
+          <h4 class="task-title">Hallucination Snowballing</h4>
+          <p class="task-description">Do LLM hallucinations compound when models build on prior errors?</p>
+          <div class="task-meta">
+            <span class="task-topic-tag">Error Propagation</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://arxiv.org/abs/2307.08678" target="_blank" class="task-card-link" data-venue="icml">
+        <div class="task-card-interactive">
+          <div class="task-card-header">
+            <span class="task-venue-tag">ICML 2024</span>
+          </div>
+          <h4 class="task-title">Counterfactual Simulatability</h4>
+          <p class="task-description">Can humans predict model behavior changes from explanations?</p>
+          <div class="task-meta">
+            <span class="task-topic-tag">Explanation Quality</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://arxiv.org/abs/2402.08939" target="_blank" class="task-card-link" data-venue="icml">
+        <div class="task-card-interactive">
+          <div class="task-card-header">
+            <span class="task-venue-tag">ICML 2024</span>
+          </div>
+          <h4 class="task-title">Premise Order Effects</h4>
+          <p class="task-description">Does the order of logical premises affect LLM reasoning accuracy?</p>
+          <div class="task-meta">
+            <span class="task-topic-tag">Logical Reasoning</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://arxiv.org/abs/2502.14924" target="_blank" class="task-card-link" data-venue="icml">
+        <div class="task-card-interactive">
+          <div class="task-card-header">
+            <span class="task-venue-tag">ICML 2025</span>
+          </div>
+          <h4 class="task-title">Fractal Complexity</h4>
+          <p class="task-description">Do LLMs capture the fractal structure of natural language?</p>
+          <div class="task-meta">
+            <span class="task-topic-tag">Language Structure</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- NeurIPS Papers (for NeurIPS tab) -->
+      <a href="https://arxiv.org/abs/2402.10200" target="_blank" class="task-card-link" data-venue="neurips">
+        <div class="task-card-interactive">
+          <div class="task-card-header">
+            <span class="task-venue-tag">NeurIPS 2024</span>
+          </div>
+          <h4 class="task-title">CoT Without Prompting</h4>
+          <p class="task-description">Can altered decoding reveal latent reasoning paths in LLMs?</p>
+          <div class="task-meta">
+            <span class="task-topic-tag">Decoding Strategies</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://arxiv.org/abs/2405.04776" target="_blank" class="task-card-link" data-venue="neurips">
+        <div class="task-card-interactive">
+          <div class="task-card-header">
+            <span class="task-venue-tag">NeurIPS 2024</span>
+          </div>
+          <h4 class="task-title">Chain of Thoughtlessness</h4>
+          <p class="task-description">Does CoT actually teach LLMs general algorithmic procedures?</p>
+          <div class="task-meta">
+            <span class="task-topic-tag">Planning Analysis</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://arxiv.org/abs/2510.04398" target="_blank" class="task-card-link" data-venue="neurips">
+        <div class="task-card-interactive">
+          <div class="task-card-header">
+            <span class="task-venue-tag">NeurIPS 2025</span>
+          </div>
+          <h4 class="task-title">SECA Adversarial Examples</h4>
+          <p class="task-description">Can semantic-preserving prompt changes cause LLMs to hallucinate?</p>
+          <div class="task-meta">
+            <span class="task-topic-tag">Adversarial Robustness</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://arxiv.org/abs/2502.00313" target="_blank" class="task-card-link" data-venue="neurips">
+        <div class="task-card-interactive">
+          <div class="task-card-header">
+            <span class="task-venue-tag">NeurIPS 2025</span>
+          </div>
+          <h4 class="task-title">Distributive Fairness</h4>
+          <p class="task-description">How fair are LLMs in resource allocation decisions?</p>
+          <div class="task-meta">
+            <span class="task-topic-tag">Fairness</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://arxiv.org/abs/2503.22674" target="_blank" class="task-card-link" data-venue="neurips">
+        <div class="task-card-interactive">
+          <div class="task-card-header">
+            <span class="task-venue-tag">NeurIPS 2025</span>
+          </div>
+          <h4 class="task-title">QuestBench</h4>
+          <p class="task-description">Can LLMs ask the right questions to acquire missing information?</p>
+          <div class="task-meta">
+            <span class="task-topic-tag">Information Seeking</span>
+          </div>
+        </div>
+      </a>
     </div>
 
     <div class="tasks-more">
@@ -392,18 +635,17 @@
       <div class="error-phase-card planning">
         <div class="phase-icon">📋</div>
         <h4>Planning</h4>
-        <div class="phase-percentage">60.3%</div>
+        <div class="phase-percentage">73.6%</div>
         <ul class="phase-errors">
           <li>Goal Deviation</li>
           <li>Method Deviation</li>
-          <li>Scope Mismatch</li>
         </ul>
       </div>
 
       <div class="error-phase-card implementation">
         <div class="phase-icon">💻</div>
         <h4>Implementation</h4>
-        <div class="phase-percentage">18.2%</div>
+        <div class="phase-percentage">3.0%</div>
         <ul class="phase-errors">
           <li>Unsound Code</li>
           <li>Missing Steps</li>
@@ -414,10 +656,10 @@
       <div class="error-phase-card execution">
         <div class="phase-icon">⚡</div>
         <h4>Execution</h4>
-        <div class="phase-percentage">8.1%</div>
+        <div class="phase-percentage">5.6%</div>
         <ul class="phase-errors">
           <li>Premature Termination</li>
-          <li>Resource Limits</li>
+          <li>Endless Loop</li>
           <li>Runtime Errors</li>
         </ul>
       </div>
@@ -425,7 +667,7 @@
       <div class="error-phase-card analysis">
         <div class="phase-icon">🔬</div>
         <h4>Analysis</h4>
-        <div class="phase-percentage">13.4%</div>
+        <div class="phase-percentage">17.8%</div>
         <ul class="phase-errors">
           <li>Misinterpretation</li>
           <li>Overgeneralization</li>
@@ -445,12 +687,15 @@
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title section-title has-text-centered">Citation</h2>
-    <pre><code>@inproceedings{firebench2026,
+    <p class="has-text-centered" style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+      Paper coming soon. Citation will be available upon publication.
+    </p>
+    <pre><code>@article{firebench2026,
   title     = {FIRE-Bench: Evaluating Research Agents on the Rediscovery of Scientific Insights},
-  author    = {Anonymous},
-  booktitle = {International Conference on Learning Representations (ICLR)},
+  author    = {Wang, Zhen and Bai, Fan and Luo, Zhongyan and Su, Jinyan and Sun, Kaiser and Liu, Weiqi and Chen, Albert and Liu, Jieyuan and Zhou, Kun and Cardie, Claire and Dredze, Mark and Xing, Eric P. and Hu, Zhiting},
+  journal   = {arXiv preprint},
   year      = {2026},
-  note      = {Under Review}
+  note      = {Coming Soon}
 }</code></pre>
   </div>
 </section>
@@ -505,7 +750,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Task filter functionality
   const filterButtons = document.querySelectorAll('.task-filter');
-  const taskCards = document.querySelectorAll('.task-card-interactive');
+  const taskCardLinks = document.querySelectorAll('.task-card-link');
+
+  // Initialize: show only featured papers (for "All" tab)
+  taskCardLinks.forEach(link => {
+    if (link.getAttribute('data-featured') === 'true') {
+      link.style.display = 'block';
+    } else {
+      link.style.display = 'none';
+    }
+  });
 
   filterButtons.forEach(button => {
     button.addEventListener('click', function() {
@@ -515,20 +769,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
       const filter = this.getAttribute('data-filter');
 
-      taskCards.forEach(card => {
-        if (filter === 'all' || card.getAttribute('data-venue') === filter) {
-          card.style.display = 'block';
+      taskCardLinks.forEach(link => {
+        if (filter === 'all') {
+          // Show only featured papers for "All" tab
+          if (link.getAttribute('data-featured') === 'true') {
+            link.style.display = 'block';
+          } else {
+            link.style.display = 'none';
+          }
+        } else if (link.getAttribute('data-venue') === filter) {
+          link.style.display = 'block';
         } else {
-          card.style.display = 'none';
+          link.style.display = 'none';
         }
       });
-    });
-  });
-
-  // Task card click to expand (optional)
-  taskCards.forEach(card => {
-    card.addEventListener('click', function() {
-      this.classList.toggle('expanded');
     });
   });
 });
