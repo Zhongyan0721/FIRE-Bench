@@ -17,13 +17,15 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="./static/css/index.css?v=2">
+  <link rel="stylesheet" href="./static/css/index.css?v=4">
   <link rel="icon" href="./static/images/favicon.svg">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
 
@@ -132,96 +134,35 @@
       From Papers to Verifiable Discovery Tasks
     </p>
 
-    <div class="method-steps">
-      <div class="method-step">
-        <div class="method-step-header">
-          <div class="method-step-number">1</div>
-          <h4 class="method-step-title">Research-Problem Tree</h4>
-        </div>
-        <p class="method-step-desc">
-          Formalize each paper as a hierarchical tree encoding the reasoning trajectory from broad questions to specific tasks.
-        </p>
-        <div class="method-details">
-          <div class="method-detail-item">
-            <span class="detail-icon">🌳</span>
-            <span><strong>Root:</strong> Overarching research question</span>
-          </div>
-          <div class="method-detail-item">
-            <span class="detail-icon">🔀</span>
-            <span><strong>Intermediate:</strong> Narrower subproblems</span>
-          </div>
-          <div class="method-detail-item">
-            <span class="detail-icon">🎯</span>
-            <span><strong>Leaf:</strong> Executable experimental tasks</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="method-step">
-        <div class="method-step-header">
-          <div class="method-step-number">2</div>
-          <h4 class="method-step-title">Constrained Rediscovery</h4>
-        </div>
-        <p class="method-step-desc">
-          Create tasks by selecting mid-level nodes that balance exploratory freedom with empirical verifiability.
-        </p>
-        <div class="method-details">
-          <div class="method-detail-item">
-            <span class="detail-icon">📝</span>
-            <span><strong>Input:</strong> High-level research question</span>
-          </div>
-          <div class="method-detail-item">
-            <span class="detail-icon">🔒</span>
-            <span><strong>Withheld:</strong> Methodology & conclusions</span>
-          </div>
-          <div class="method-detail-item">
-            <span class="detail-icon">✅</span>
-            <span><strong>Ground Truth:</strong> Paper's findings</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="method-step">
-        <div class="method-step-header">
-          <div class="method-step-number">3</div>
-          <h4 class="method-step-title">Claim-Level Evaluation</h4>
-        </div>
-        <p class="method-step-desc">
-          Decompose conclusions into atomic claims and compute standard metrics for fine-grained assessment.
-        </p>
-        <div class="method-metrics">
-          <div class="metric-item">
-            <div class="metric-name">Precision</div>
-            <div class="metric-formula">
-              <span class="fraction">
-                <span class="numerator">|C<sub>a</sub> ∩ C<sub>gt</sub>|</span>
-                <span class="denominator">|C<sub>a</sub>|</span>
-              </span>
-            </div>
-            <div class="metric-desc">Correct among generated</div>
-          </div>
-          <div class="metric-item">
-            <div class="metric-name">Recall</div>
-            <div class="metric-formula">
-              <span class="fraction">
-                <span class="numerator">|C<sub>a</sub> ∩ C<sub>gt</sub>|</span>
-                <span class="denominator">|C<sub>gt</sub>|</span>
-              </span>
-            </div>
-            <div class="metric-desc">Ground truth recovered</div>
-          </div>
-          <div class="metric-item">
-            <div class="metric-name">F₁</div>
-            <div class="metric-formula">
-              <span class="fraction">
-                <span class="numerator">2 · P · R</span>
-                <span class="denominator">P + R</span>
-              </span>
-            </div>
-            <div class="metric-desc">Overall metric</div>
-          </div>
-        </div>
-      </div>
+    <div class="method-content">
+      <p>
+        FIRE-Bench is constructed through <strong>research-problem decomposition</strong>, a process that transforms high-quality 
+        empirical analysis papers into verifiable benchmark tasks. This approach balances exploratory freedom (avoiding tasks that 
+        are too broad to benchmark) with empirical verifiability (avoiding tasks that are too narrow to allow genuine exploration).
+      </p>
+      <p>
+        We formalize each paper \(\mathcal{P}\) as a hierarchical research-problem tree \(\mathcal{T}(\mathcal{P})\) 
+        that encodes the authors' reasoning trajectory, from broad research questions (e.g., "Do LLMs contain biases?") to specific 
+        experimental tasks. The tree is extracted via an automated parser: \(E_\phi: \Sigma^* \rightarrow \mathcal{T},\; \mathcal{T}(\mathcal{P}) = E_\phi(\mathcal{P})\). 
+        It consists of three node types: Root node \(r\) captures the overarching 
+        research problem from the paper's title or abstract; Intermediate nodes \(v_i \in \mathcal{V}\) represent narrower 
+        subproblems that decompose the main question (e.g., "Do LLMs exhibit racial bias in medical report generation?"); Leaf nodes 
+        \(l_j \in \mathcal{L}\) specify fully executable experiments with datasets \(\mathcal{D}_j\), 
+        methods \(\mathcal{M}_j\), and evaluation metrics \(\mathcal{C}_j\), each mapping directly to 
+        figures or tables in the original paper.
+      </p>
+      <p>
+        From each tree, we create a <strong>"constrained rediscovery" problem</strong> by first identifying a target leaf node 
+        \(l^* \in \mathcal{L}\) corresponding to a central finding, then selecting an intermediate node 
+        \(v^* \in \mathcal{V}\) that balances openness with verifiability. The agent receives only the research question 
+        from \(v^*\), while the methodology and conclusion from \(l^*\) are withheld. 
+        The paper's published findings serve as ground truth for evaluation.
+      </p>
+      <p>
+        We evaluate agent performance through claim-level analysis: both agent conclusions \(C_{\text{agent}}\) 
+        and ground truth \(C_{\text{gt}}\) are decomposed into atomic, verifiable claims. We then compute 
+        \(\text{Precision}\), \(\text{Recall}\), and \(F_1\) as the overall performance metric.
+      </p>
     </div>
   </div>
 </section>
