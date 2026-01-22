@@ -1,28 +1,5 @@
 window.HELP_IMPROVE_VIDEOJS = false;
 
-var INTERP_BASE = "./static/interpolation/stacked";
-var NUM_INTERP_FRAMES = 240;
-
-var interp_images = [];
-function preloadInterpolationImages() {
-  for (var i = 0; i < NUM_INTERP_FRAMES; i++) {
-    var path = INTERP_BASE + '/' + String(i).padStart(6, '0') + '.jpg';
-    interp_images[i] = new Image();
-    interp_images[i].src = path;
-  }
-}
-
-function setInterpolationImage(i) {
-  var image = interp_images[i];
-  image.ondragstart = function() { return false; };
-  image.oncontextmenu = function() { return false; };
-  var wrapper = document.getElementById('interpolation-image-wrapper');
-  if (wrapper) {
-    wrapper.innerHTML = '';
-    wrapper.appendChild(image);
-  }
-}
-
 // jQuery-dependent code - only run if jQuery is available
 if (typeof $ !== 'undefined') {
   $(document).ready(function() {
@@ -61,14 +38,6 @@ if (typeof $ !== 'undefined') {
           console.log(state);
         });
       }
-
-      preloadInterpolationImages();
-
-      $('#interpolation-slider').on('input', function(event) {
-        setInterpolationImage(this.value);
-      });
-      setInterpolationImage(0);
-      $('#interpolation-slider').prop('max', NUM_INTERP_FRAMES - 1);
 
       if (typeof bulmaSlider !== 'undefined') {
         bulmaSlider.attach();
